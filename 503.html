@@ -1,5 +1,4 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
@@ -110,16 +109,17 @@
   </head>
   <body>
     <img
-      src="https://simkopdes.id/images/simkopdes-color.webp"
+      src="https://simkopdes.go.id/images/primer.webp"
       alt="Logo Simkopdes"
       class="logo"
     />
 
-    <h1>SIMKOPDES Main-Tenis</h1>
+    <h1>503 - Waduh, Sistem Sedang Diupdate</h1>
     <p>
-      Bosan menunggu 3 menit <i>maintenance</i>? Yuk, <b>main-tenis!</b><br />Mainkan game ini dengan
-      menggerakkan mouse atau sentuh layar untuk memindahkan paddle. Seru untuk desktop dan
-      mobile.
+      Aplikasi Simkopdes mau istirahat dulu sekitar 3 menit untuk perawatan.
+      Biar tidak bosan menunggu, yuk kita main-tenis! Tinggal geser penunjuk
+      (mouse) di komputer atau sentuh layar HP Anda untuk menggerakkan papan
+      pemukulnya. Seru dan pas buat mengisi waktu.
     </p>
 
     <canvas id="gameCanvas" width="600" height="400"></canvas>
@@ -187,12 +187,16 @@
             firstPlayer.y = mouseY - playerHeight / 2;
           });
 
-          canvas.addEventListener("touchmove", function (event) {
-            event.preventDefault();
-            const rect = canvas.getBoundingClientRect();
-            const touchY = event.touches[0].clientY - rect.top;
-            firstPlayer.y = touchY - playerHeight / 2;
-          }, { passive: false });
+          canvas.addEventListener(
+            "touchmove",
+            function (event) {
+              event.preventDefault();
+              const rect = canvas.getBoundingClientRect();
+              const touchY = event.touches[0].clientY - rect.top;
+              firstPlayer.y = touchY - playerHeight / 2;
+            },
+            { passive: false },
+          );
 
           canvas.onclick = function () {
             if (showingWinScreen) {
@@ -288,14 +292,14 @@
             firstPlayer.y,
             playerWidth,
             playerHeight,
-            theme.elements
+            theme.elements,
           );
           colorRect(
             canvas.width - playerWidth,
             secondPlayer.y,
             playerWidth,
             playerHeight,
-            theme.elements
+            theme.elements,
           );
 
           drawNet();
@@ -310,19 +314,19 @@
             context.fillText(
               "Klik untuk melanjutkan",
               canvas.width / 2,
-              canvas.height - 100
+              canvas.height - 100,
             );
             if (firstPlayer.score > secondPlayer.score) {
               context.fillText(
                 "Kamu Menang!",
                 canvas.width / 2,
-                canvas.height / 2
+                canvas.height / 2,
               );
             } else if (secondPlayer.score > firstPlayer.score) {
               context.fillText(
                 "Kamu Kalah!",
                 canvas.width / 2,
-                canvas.height / 2
+                canvas.height / 2,
               );
             } else {
               context.fillText("Seri!", canvas.width / 2, canvas.height / 2);
@@ -353,7 +357,10 @@
               } else if (direction === "down") {
                 firstPlayer.y += 40;
               }
-              firstPlayer.y = Math.max(0, Math.min(canvas.height - playerHeight, firstPlayer.y));
+              firstPlayer.y = Math.max(
+                0,
+                Math.min(canvas.height - playerHeight, firstPlayer.y),
+              );
             }
           });
           button.addEventListener("touchstart", (event) => {
